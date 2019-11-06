@@ -338,7 +338,7 @@ class ExtensionConfig(object):
     if compiler.like('msvc'):
       compiler.defines += ['COMPILER_MSVC', 'COMPILER_MSVC32']
     else:
-      compiler.defines += ['COMPILER_GCC']
+      compiler.defines += ['COMPILER_GCC', 'HAVE_STRING_H']
 
     #!!TODO!! remove this eventually
     if sdk.name in ['portal2']:
@@ -349,7 +349,8 @@ class ExtensionConfig(object):
           '-Wno-sign-compare',
           '-Wno-class-memaccess',
           '-Wno-address',
-          '-Wno-unknown-pragmas'
+          '-Wno-unknown-pragmas',
+          '-Wno-format',
         ]
       if compiler.like('clang'):
         compiler.cxxflags += ['-Wno-macro-redefined']
